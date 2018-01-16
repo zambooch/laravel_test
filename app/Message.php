@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Message
  * @package App
  *
+ * @property integer $user_id
  * @property string $text
  */
 class Message extends Model

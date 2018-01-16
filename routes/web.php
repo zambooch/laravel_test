@@ -25,7 +25,7 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::post('/message', 'MessageController@store');
-Route::delete('/message/{message}', 'MessageController@destroy');
+Route::post('/message/destroy', 'MessageController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

@@ -22,7 +22,7 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
-        $messages = Message::all();
+        $messages = Message::all()->sortByDesc('id');
         return view('message.index', [
             'messages' => $messages
         ]);
@@ -45,5 +45,23 @@ class MessageController extends Controller
         $message->user_id = $request->user()->id;
         $message->save();
         return redirect('/');
+    }
+
+    /**
+     * Удаление сообщения
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy(Request $request)
+    {
+        $id = $request->get('id');
+        $message = Message::where("id", $id)->first();
+        if ($message) {
+            $this->authorize('destroy', $message);
+            $message->delete();
+        }
+        //TODO доделать рендер шаблона и оповещение о статусе удаления
+
     }
 }

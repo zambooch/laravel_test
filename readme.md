@@ -1,4 +1,12 @@
-## Demo repo for blog re: docker + laravel
+## Start project
 
-- [x] [Part 1 - development](https://medium.com/@shakyShane/laravel-docker-part-1-setup-for-development-e3daaefaf3c)
-- [ ] Part 2 - production (coming soon)
+## скопируем файл окружения .env 
+copy .env.example to .env
+## выполним команду
+docker-compose up -d
+## выполним команды внутри контейнера php
+docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan optimize
+docker-compose exec app php artisan migrate
+##установим зависимости composer
+composer install
