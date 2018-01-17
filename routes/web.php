@@ -26,6 +26,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::post('/message', 'MessageController@store');
 Route::post('/message/destroy', 'MessageController@destroy');
+Route::post('/message/update', 'MessageController@update');
+Route::post('/message/update-form', 'MessageController@updateForm');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

@@ -21,4 +21,16 @@ class MessagePolicy
     {
         return $user->id === $message->user_id;
     }
+
+    /**
+     * Определяем, может ли данный пользователь редактировать данную мессагу.
+     *
+     * @param  User  $user
+     * @param  Message  $message
+     * @return bool
+     */
+    public function update(User $user, Message $message)
+    {
+        return $user->id === $message->user_id;
+    }
 }

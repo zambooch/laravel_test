@@ -61,7 +61,53 @@ class MessageController extends Controller
             $this->authorize('destroy', $message);
             $message->delete();
         }
-        //TODO доделать рендер шаблона и оповещение о статусе удаления
+        $messages = Message::all()->sortByDesc('id');
 
+        return view('message._list', [
+            'messages' => $messages
+        ]);
     }
+
+    /**
+     * Рендер формы редактирования конкретного сообщения
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Request $request)
+    {
+        $id = $request->get('id');
+        /** @var Message $message */
+        $message = Message::find($id);
+
+        if ($message && $request->has('text')) {
+            $this->authorize('update', $message);
+            $message->text = $request->input('text');
+            $message->save();
+        }
+
+        $messages = Message::all()->sortByDesc('id');
+
+        return view('message._list', [
+            'messages' => $messages
+        ]);
+    }
+
+    /**
+     * Рендер формы редактирования конкретного сообщения
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function updateForm(Request $request)
+    {
+        $id = $request->get('id');
+        /** @var Message $message */
+        $message = Message::find($id);
+
+        return view('message.update_form', [
+            'message' => $message
+        ]);
+    }
+
 }

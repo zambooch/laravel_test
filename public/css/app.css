@@ -12,8 +12,17 @@ body {
     font-weight: bold;
 }
 
+button:active,
+button:hover {
+    outline: none;
+}
+
 .message-btn {
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+.message-btn-update {
+    right: 90px;
 }

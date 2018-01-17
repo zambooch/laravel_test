@@ -8,5 +8,7 @@ docker-compose up -d
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan optimize
 docker-compose exec app php artisan migrate
-##установим зависимости composer
+## установим зависимости composer
 composer install
+## по умолчанию, проект будет доступен по следующему урлу 
+http://0.0.0.0:8080

@@ -18,18 +18,12 @@
                         </div>
                     </form>
 
-                    @foreach($messages as $message)
-                        <div class="well">
-                            <h5 class="message-author">{{$message->user->name}}</h5>
-                            <p>{{$message->text}}</p>
-                            @if($message->user_id == Auth::user()->id)
-                                <button id="deleteMessage" class="btn btn-danger message-btn" data-id="{{$message->id}}">Удалить</button>
-                                {{$message->created_at}}
-                            @endif
-                        </div>
-                    @endforeach
+                    <div class="messages">
+                        @include('message/_list', ['messages'=>$messages])
+                    </div>
                 </div>
             @endif
         </div>
     </div>
+    @include('message/update_modal')
 @stop
