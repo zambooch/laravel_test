@@ -33,3 +33,8 @@ Route::post('/message/update-form', 'MessageController@updateForm');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/records', function () {
+    $records = \App\Record::all();
+    return view('records', compact('records'));
+});
