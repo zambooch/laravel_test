@@ -13,6 +13,9 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+window.Vue = require('vue');
+
+
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue')
@@ -28,3 +31,7 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+
+const app = new Vue({
+    el: '#app'
+});

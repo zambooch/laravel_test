@@ -49,6 +49,8 @@
             var textarea = $('#messageText');
             var id = textarea.attr('data-id');
             var text = textarea.val();
+            NProgress.start();
+            NProgress.configure({ease: 'ease', speed: 3});
             $.ajax({
                 method: "POST",
                 url: "/message/update",
@@ -59,6 +61,8 @@
                 success: function (data) {
                     $(".messages").html(data);
                     $('#updateModal').modal('toggle');
+                    $('.modal-backdrop').removeClass('in');
+                    NProgress.done();
                 }
             })
         }, this));

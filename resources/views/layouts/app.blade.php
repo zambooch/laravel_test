@@ -55,8 +55,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}">Вход</a></li>
+                        <li><a href="{{ url('/register') }}">Регистрация</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -69,7 +69,7 @@
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Выйти
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST"
@@ -93,14 +93,12 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
 </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous">
-</script>
+<script src="{{asset('js/app.js')}}" type="text/javascript" ></script>
 
 <script src="{!! asset('/js/nprogress.js') !!}" type="text/javascript" ></script>
 
 <script src="{!! asset('/js/messages.js') !!}" type="text/javascript" ></script>
+@yield('js')
 <script>
     $(function () {
         $.ajaxSetup({

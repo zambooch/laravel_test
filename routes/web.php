@@ -13,6 +13,8 @@
 
 Route::get('/', 'MessageController@index');
 
+Route::post('ulogin', 'UloginController@login');
+
 Route::auth();
 
 // Маршруты аутентификации...

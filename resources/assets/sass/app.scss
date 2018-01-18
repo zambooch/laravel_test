@@ -6,4 +6,33 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+body {
+  font-size: 16px;
+}
+
+.well {
+  position: relative;
+}
+
+.message-author {
+  font-size: 18px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+button:active,
+button:hover {
+  outline: none;
+}
+
+.message-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.message-btn-update {
+  right: 90px;
+}

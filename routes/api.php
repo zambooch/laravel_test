@@ -52,3 +52,4 @@ Route::post('/record', function (Request $request) {
         'message' => 'Пользователь '. \Auth::user()->name .' добавил рекорд!',
     ], 201);
 })->middleware('auth:api');
+
