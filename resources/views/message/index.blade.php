@@ -9,7 +9,7 @@
                 </div>
             @if (!Auth::guest())
                 <div class="span8">
-                    <form action="{{url('message')}}" method="post" class="form-horizontal"
+                    <form id="create-form" action="{{url('message')}}" method="post" class="form-horizontal"
                           style="margin-bottom: 50px;">
                         {{ csrf_field() }}
                         <div class="control-group">
