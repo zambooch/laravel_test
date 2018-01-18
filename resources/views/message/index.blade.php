@@ -4,6 +4,9 @@
         <div class="row-fluid">
             @include('common.errors')
             <div class="span2"></div>
+                <div class="alert alert-danger my-alert">
+
+                </div>
             @if (!Auth::guest())
                 <div class="span8">
                     <form action="{{url('message')}}" method="post" class="form-horizontal"
@@ -14,7 +17,7 @@
                         </div>
                         <br>
                         <div class="control-group">
-                            <button type="submit" class="btn btn-primary">Отправить</button>
+                            <button type="button" class="btn btn-primary create-message">Отправить</button>
                         </div>
                     </form>
 

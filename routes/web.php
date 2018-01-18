@@ -26,7 +26,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::post('/message', 'MessageController@store');
+Route::post('/message/store', 'MessageController@store');
 Route::post('/message/destroy', 'MessageController@destroy');
 Route::post('/message/update', 'MessageController@update');
 Route::post('/message/update-form', 'MessageController@updateForm');

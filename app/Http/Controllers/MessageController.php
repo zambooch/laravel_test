@@ -14,6 +14,11 @@ class MessageController extends Controller
         $this->middleware('auth');
     }
 
+    private function getAllMessages()
+    {
+        return $messages = Message::all()->sortByDesc('id');
+    }
+
     /**
      * Показать список всех сообщений
      *
@@ -22,7 +27,7 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
-        $messages = Message::all()->sortByDesc('id');
+        $messages = $this->getAllMessages();
         return view('message.index', [
             'messages' => $messages
         ]);
@@ -36,15 +41,19 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'text' => 'required|max:1000|min:1'
-        ]);
+        $this->validate(
+            $request, ['text' => 'required|max:1000'],
+            ['text.required' => 'Текст не может быть пустым']
+        );
 
         $message = new Message;
         $message->text = $request->input('text');
         $message->user_id = $request->user()->id;
         $message->save();
-        return redirect('/');
+
+        return view('message._list', [
+            'messages' => $messages = $this->getAllMessages()
+        ]);
     }
 
     /**
@@ -61,7 +70,7 @@ class MessageController extends Controller
             $this->authorize('destroy', $message);
             $message->delete();
         }
-        $messages = Message::all()->sortByDesc('id');
+        $messages = $this->getAllMessages();
 
         return view('message._list', [
             'messages' => $messages
@@ -80,13 +89,19 @@ class MessageController extends Controller
         /** @var Message $message */
         $message = Message::find($id);
 
+        $this->validate(
+            $request, ['text' => 'required|max:1000'],
+            ['text.required' => 'Текст не может быть пустым']
+        );
+
         if ($message && $request->has('text')) {
+
             $this->authorize('update', $message);
             $message->text = $request->input('text');
             $message->save();
         }
 
-        $messages = Message::all()->sortByDesc('id');
+        $messages = $this->getAllMessages();
 
         return view('message._list', [
             'messages' => $messages

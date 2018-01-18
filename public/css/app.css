@@ -30,6 +30,10 @@ button:hover {
     right: 90px;
 }
 
+.my-alert {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .message-btn {
         position: static;
