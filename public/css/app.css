@@ -29,3 +29,11 @@ button:hover {
 .message-btn-update {
     right: 90px;
 }
+
+@media (max-width: 768px) {
+    .message-btn {
+        position: static;
+        margin-bottom: 20px;
+        width: 100%
+    }
+}
