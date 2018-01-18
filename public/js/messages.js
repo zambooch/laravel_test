@@ -42,6 +42,7 @@
                 success: function (data) {
                     $(".messages").html(data);
                     NProgress.done();
+                    $('#create-form')[0].reset();
                 },
                 error: function (data) {
                     var errors = data.responseJSON;
